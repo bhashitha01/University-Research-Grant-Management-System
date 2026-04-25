@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResearchDesk Student Dashboard</title>
+    <link rel="stylesheet" href="Donut.css">
+    <link rel="stylesheet" href="y.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+</head>
+<body>
+    <!--dash board ek-->
+    <div class="dashboard">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="logo.png" alt="Logo" height="90" width="90">
+                <div>
+                    <h2>Student</h2>
+                    <p>ResearchDesk</p>
+                </div>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active">
+                    <i class="fa-solid fa-desktop"></i>
+                    <span>Dashborad</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    <span>Proposal</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-upload"></i>
+                    <span>Upload</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-star"></i>
+                    <span>Review</span>
+                </a>
+            </nav>
+
+            <a href="#" class="nav-item logout">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Log out</span>
+            </a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="topbar">
+                <div class="search-box">
+                    <input type="text" placeholder="Search...">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                
+                <div class="topbar-right">
+                    <i class="fa-regular fa-moon"></i>
+                    <i class="fa-regular fa-bell"></i>
+                    <div class="user-profile">
+                        <img src="user.jpg" alt="User" height="30px" width="30px">
+                        <div>
+                            <h4>W.L Bhashitha</h4>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!--Project sub feeback 3-->
+            <section class="stats-grid">
+
+    <button class="stat-card">
+        <i class="fa-solid fa-folder-open"></i>
+        <div>
+            <a href="#">
+            <h3>All Project</h3>
+             </a>
+            <p>38 project</p>
+           
+        </div>
+    </button>
+
+    <button class="stat-card">
+        <i class="fa-solid fa-file-arrow-up"></i>
+        <div>
+             <a href="#">
+            <h3>Submission</h3>
+              </a>
+            <p>100+ Submitted</p>
+           
+        </div>
+    </button>
+
+    <button class="stat-card">
+        <i class="fa-solid fa-comments"></i>
+        <div>
+             <a href="#">
+            <h3>Feedback</h3>
+              </a>
+            <p>3 Comment</p>
+           
+        </div>
+    </button>
+
+</section>
+
+            <!-- Content Grid -->
+            <section class="content-grid">
+                <!-- Pie Chart ek -->
+                 <div class="card">
+                 <h2>Research Status</h2>
+                 <canvas id="myChart"></canvas>
+                 </div>
+                 <script src="script.js"></script>
+                 
+
+                <!-- Recent Feedback menu ek -->
+                <div class="feedback-card">
+                    <div class="feedback-header">Recent Feedback</div>
+                    <div class="feedback-list">
+                        <div class="feedback-item">
+                            <img src="https://i.pravatar.cc/40?img=3" alt="Naveen">
+                            <span>Naveen</span>
+                            <button class="btn-comment">Comment</button>
+                        </div>
+                        <div class="feedback-item">
+                            <img src="https://i.pravatar.cc/40?img=4" alt="Deyya">
+                            <span>Deyya</span>
+                            <button class="btn-comment">Comment</button>
+                        </div>
+                        <div class="feedback-item">
+                            <img src="https://i.pravatar.cc/40?img=5" alt="Lasindu">
+                            <span>lasindu</span>
+                            <button class="btn-comment">Comment</button>
+                        </div>
+                        <div class="feedback-item">
+                            <img src="https://i.pravatar.cc/40?img=6" alt="Wimukthi">
+                            <span>Wimukthi</span>
+                            <button class="btn-comment">Comment</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
