@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResearchDesk Student</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="webpage.css">
+
+</head>
+<body>
+<div class="dashboard">
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="https://via.placeholder.com/40x40/2F5DD3/ffffff?text=RD" alt="Logo">
+            <div><h2>Student</h2><p>ResearchDesk</p></div>
+        </div>
+        <nav class="nav-menu">
+            <button class="nav-item active" onclick="showPage('dashboard',this)">
+                <i class="fa-solid fa-desktop"></i><span>Dashboard</span>
+            </button>
+            <button class="nav-item" onclick="showPage('proposal',this)">
+                <i class="fa-solid fa-clipboard-list"></i><span>Proposal</span>
+            </button>
+            <button class="nav-item" onclick="showPage('upload',this)">
+                <i class="fa-solid fa-upload"></i><span>Upload</span>
+            </button>
+            <button class="nav-item" onclick="showPage('review',this)">
+                <i class="fa-solid fa-star"></i><span>Review</span>
+            </button>
+        </nav>
+        <button class="nav-item logout">
+            <i class="fa-solid fa-right-from-bracket"></i><span>Log out</span>
+        </button>
+    </aside>
+
+    <!-- ── MAIN ── -->
+    <main class="main-content">
+
+        <!-- Topbar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <h3 id="pageTitle"><i class="fa-solid fa-desktop" style="margin-right:8px;"></i>Dashboard</h3>
+            </div>
+            <div class="topbar-right">
+                <i class="fa-regular fa-moon"></i>
+                <i class="fa-regular fa-bell"></i>
+                <div class="user-profile">
+                    <img src="https://i.pravatar.cc/40?img=12" alt="User">
+                    <div><h4>W.L Bhashitha</h4></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ══ DASHBOARD PAGE ══ -->
+        <div id="page-dashboard" class="page active">
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <div><h3>All Projects</h3><p>38 projects</p></div>
+                </div>
+                <div class="stat-card">
+                    <i class="fa-solid fa-file-arrow-up"></i>
+                    <div><h3>Submissions</h3><p>3 Submitted</p></div>
+                </div>
+                <div class="stat-card">
+                    <i class="fa-solid fa-comments"></i>
+                    <div><h3>Feedback</h3><p>3 Comments</p></div>
+                </div>
+            </section>
+            <section class="content-grid">
+                <div class="chart-card">
+                    <h3><i class="fa-solid fa-chart-pie" style="color:#2F5DD3;margin-right:8px;"></i>Research Status</h3>
+                    <div class="pie-chart">
+                        <div class="pie"></div>
+                        <div class="chart-legend">
+                            <div class="legend-item"><span class="dot green"></span><p>Completed <b>60%</b></p></div>
+                            <div class="legend-item"><span class="dot yellow"></span><p>Pending <b>25%</b></p></div>
+                            <div class="legend-item"><span class="dot red"></span><p>Rejected <b>15%</b></p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feedback-card">
+                    <div class="feedback-header"><i class="fa-solid fa-comments" style="margin-right:8px;"></i>Recent Feedback</div>
+                    <div class="feedback-item">
+                        <img src="https://i.pravatar.cc/40?img=3" alt="Dr.Sumith">
+                        <span>Dr. Sumith</span>
+                        <button class="btn-comment"><i class="fa-regular fa-comment" style="margin-right:5px;"></i>Comment</button>
+                    </div>
+                    <div class="feedback-item">
+                        <img src="https://i.pravatar.cc/40?img=4" alt="Dr.Kamal">
+                        <span>Dr. Kamal</span>
+                        <button class="btn-comment"><i class="fa-regular fa-comment" style="margin-right:5px;"></i>Comment</button>
+                    </div>
+                    <div class="feedback-item">
+                        <img src="https://i.pravatar.cc/40?img=5" alt="Dr.Nimal">
+                        <span>Dr. Nimal</span>
+                        <button class="btn-comment"><i class="fa-regular fa-comment" style="margin-right:5px;"></i>Comment</button>
+                    </div>
+                    <div class="feedback-item">
+                        <img src="https://i.pravatar.cc/40?img=6" alt="Dr.Perera">
+                        <span>Dr. Perera</span>
+                        <button class="btn-comment"><i class="fa-regular fa-comment" style="margin-right:5px;"></i>Comment</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ══ PROPOSAL PAGE ══ -->
+        <div id="page-proposal" class="page">
+            <div class="proposal-card">
+                <div class="proposal-header">
+                    <h2><i class="fa-solid fa-clipboard-list" style="color:#2F5DD3;margin-right:10px;"></i>Research Status</h2>
+                    <div class="review-controls">
+
+                        <!-- Search -->
+                        <div class="search-bar-wrap">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="searchInput" placeholder="Search title...">
+                        </div>
+
+                        <!-- Filter -->
+                        <div class="filter-wrap">
+                            <button class="filter-btn" id="filterBtn">
+                                <i class="fa-solid fa-filter"></i>
+                                <span id="filterLabel">Filter</span>
+                                <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i>
+                            </button>
+                            <div class="filter-dropdown" id="filterDropdown">
+                                <a href="#" data-filter="all"><i class="fa-solid fa-border-all"></i>All</a>
+                                <div class="divider"></div>
+                                <a href="#" data-filter="pending"><i class="fa-solid fa-clock" style="color:#28a745;"></i>Pending</a>
+                                <a href="#" data-filter="approved"><i class="fa-solid fa-circle-check" style="color:#e6a817;"></i>Approved</a>
+                                <a href="#" data-filter="rejected"><i class="fa-solid fa-circle-xmark" style="color:#dc3545;"></i>Rejected</a>
+                            </div>
+                        </div>
+
+                        <!-- Date Picker — real input floats over button -->
+                        <div class="date-wrap">
+                            <button class="date-btn" id="dateBtn">
+                                <i class="fa-regular fa-calendar"></i>
+                                <span id="dateBtnLabel">Pick Date</span>
+                            </button>
+                            <input type="date" class="real-date-input" id="datePicker">
+                        </div>
+                        <button class="clear-date" id="clearDate" title="Clear date">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+
+                    </div>
+                </div>
+
+                <table class="research-table">
+                    <thead>
+                        <tr>
+                            <th><i class="fa-solid fa-file-lines" style="color:#2F5DD3;margin-right:6px;"></i>Title</th>
+                            <th><i class="fa-regular fa-calendar" style="color:#2F5DD3;margin-right:6px;"></i>Date</th>
+                            <th><i class="fa-solid fa-tag" style="color:#2F5DD3;margin-right:6px;"></i>Status</th>
+                            <th><i class="fa-solid fa-bolt" style="color:#2F5DD3;margin-right:6px;"></i>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+                <div class="no-results" id="noResults" style="display:none;">
+                    <i class="fa-solid fa-magnifying-glass-minus"></i>No matching records found.
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ UPLOAD PAGE ══ -->
+        <div id="page-upload" class="page">
+            <div class="upload-card">
+                <h2><i class="fa-solid fa-upload" style="color:#2F5DD3;margin-right:10px;"></i>Upload Research</h2>
+                <p>Upload your research documents here. Accepted formats: PDF, DOCX, PPTX</p>
+                <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <span><b>Click to browse</b> or drag & drop your file here</span>
+                    <input type="file" id="fileInput" style="display:none;" accept=".pdf,.docx,.pptx">
+                </div>
+                <button class="btn-upload">
+                    <i class="fa-solid fa-paper-plane"></i>Submit Research
+                </button>
+            </div>
+        </div>
+
+        <!-- ══ REVIEW PAGE ══ -->
+        <div id="page-review" class="page">
+            <div class="review-info-card">
+                <h2><i class="fa-solid fa-star" style="color:#2F5DD3;margin-right:10px;"></i>Recent Feedback</h2>
+                <div class="review-feedback-item">
+                    <img src="https://i.pravatar.cc/48?img=3" alt="">
+                    <div class="rf-info">
+                        <strong>Dr. Sumith</strong>
+                        <span>AI Research — 31/03/2024</span>
+                    </div>
+                    <button class="btn-open-comment"><i class="fa-regular fa-comment-dots"></i>View Comment</button>
+                </div>
+                <div class="review-feedback-item">
+                    <img src="https://i.pravatar.cc/48?img=4" alt="">
+                    <div class="rf-info">
+                        <strong>Dr. Kamal</strong>
+                        <span>Computer Research — 09/03/2024</span>
+                    </div>
+                    <button class="btn-open-comment"><i class="fa-regular fa-comment-dots"></i>View Comment</button>
+                </div>
+                <div class="review-feedback-item">
+                    <img src="https://i.pravatar.cc/48?img=5" alt="">
+                    <div class="rf-info">
+                        <strong>Dr. Nimal</strong>
+                        <span>Computer Research — 09/04/2024</span>
+                    </div>
+                    <button class="btn-open-comment"><i class="fa-regular fa-comment-dots"></i>View Comment</button>
+                </div>
+                <div class="review-feedback-item">
+                    <img src="https://i.pravatar.cc/48?img=6" alt="">
+                    <div class="rf-info">
+                        <strong>Dr. Perera</strong>
+                        <span>Data Science Study — 15/02/2024</span>
+                    </div>
+                    <button class="btn-open-comment"><i class="fa-regular fa-comment-dots"></i>View Comment</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<!-- ── DETAIL MODAL ── -->
+<div class="detail-overlay" id="detailOverlay">
+    <div class="detail-modal">
+        <div class="detail-modal-header">
+            <h3><i class="fa-solid fa-file-lines" style="margin-right:8px;"></i>Research Detail</h3>
+            <button class="modal-close" id="modalClose"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="detail-body" id="detailBody"></div>
+        <div class="detail-footer">
+            <button class="btn-close-modal" id="modalCloseBtn"><i class="fa-solid fa-xmark"></i> Close</button>
+        </div>
+    </div>
+</div>
+
+<script src="webpage.js"></script>
+</body>
+</html>
