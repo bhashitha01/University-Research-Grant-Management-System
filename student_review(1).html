@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResearchDesk | Student Review</title>
+    <!-- Using your original fonts and icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --sidebar-bg: #ffffff;
+            --main-bg: #f4f7fe;
+            --accent: #4318FF;
+            --text-dark: #1B2559;
+            --text-grey: #A3AED0;
+            --white: #ffffff;
+            --border: #E9EDF7;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'DM Sans', sans-serif; }
+        body { background-color: var(--main-bg); display: flex; }
+
+        /* --- SIDEBAR (Matching your first code) --- */
+        .sidebar {
+            width: 280px; height: 100vh; background: var(--white);
+            padding: 40px 20px; border-right: 1px solid var(--border);
+            position: fixed;
+        }
+        .logo { display: flex; align-items: center; gap: 15px; margin-bottom: 50px; }
+        .logo h2 { color: var(--text-dark); font-size: 20px; }
+        
+        .nav-menu { display: flex; flex-direction: column; gap: 10px; }
+        .nav-item {
+            text-decoration: none; color: var(--text-grey);
+            padding: 15px; border-radius: 12px;
+            display: flex; align-items: center; gap: 15px;
+            font-weight: bold; transition: 0.3s;
+        }
+        .nav-item.active { background: var(--accent); color: white; }
+        .nav-item:hover:not(.active) { background: #f0f0f0; }
+
+        /* --- MAIN CONTENT --- */
+        .main-content { margin-left: 280px; width: calc(100% - 280px); padding: 30px; }
+        
+        .header-title { margin-bottom: 25px; }
+        .header-title h1 { color: var(--text-dark); font-size: 28px; }
+        .header-title p { color: var(--text-grey); }
+
+        /* --- REVIEW GRID --- */
+        .content-grid { display: grid; grid-template-columns: 1fr 350px; gap: 25px; }
+
+        .card {
+            background: var(--white); border-radius: 20px;
+            padding: 24px; border: 1px solid var(--border);
+        }
+
+        /* --- TABLE STYLE --- */
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th { text-align: left; color: var(--text-grey); font-size: 13px; padding-bottom: 15px; border-bottom: 1px solid var(--border); }
+        td { padding: 15px 0; color: var(--text-dark); font-size: 14px; border-bottom: 1px solid var(--border); }
+
+        .badge {
+            padding: 5px 12px; border-radius: 10px; font-size: 12px; font-weight: bold;
+        }
+        .pending { background: #FFF9E6; color: #FFB800; }
+        .approved { background: #E6FFF1; color: #05CD99; }
+
+        /* --- EVALUATION PANEL (Right Side) --- */
+        .eval-panel h3 { color: var(--text-dark); margin-bottom: 20px; }
+        .criteria { margin-bottom: 15px; }
+        .criteria-label { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px; }
+        .progress-bar { height: 8px; background: #eee; border-radius: 10px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--accent); border-radius: 10px; }
+
+        .comment-box {
+            width: 100%; height: 100px; border: 1px solid var(--border);
+            border-radius: 12px; padding: 10px; margin: 15px 0; resize: none;
+        }
+
+        .btn-group { display: flex; gap: 10px; }
+        .btn {
+            flex: 1; padding: 12px; border: none; border-radius: 12px;
+            cursor: pointer; font-weight: bold; transition: 0.2s;
+        }
+        .btn-approve { background: #05CD99; color: white; }
+        .btn-reject { background: #EE5D50; color: white; }
+        .btn:hover { opacity: 0.8; }
+
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-graduation-cap" style="font-size: 30px; color: var(--accent);"></i>
+            <div>
+                <h2>ResearchDesk</h2>
+                <p style="font-size: 12px; color: var(--text-grey);">Reviewer Portal</p>
+            </div>
+        </div>
+        
+        <nav class="nav-menu">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fa-solid fa-desktop"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-file-invoice"></i>
+                <span>Proposals</span>
+            </a>
+            <a href="#" class="nav-item active">
+                <i class="fa-solid fa-star"></i>
+                <span>Reviews</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-user-gear"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <div class="header-title">
+            <h1>Student Reviews</h1>
+            <p>Evaluate and provide feedback on submitted research proposals.</p>
+        </div>
+
+        <div class="content-grid">
+            <!-- Left Side: Table -->
+            <div class="card">
+                <h3>Recent Submissions</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>STUDENT NAME</th>
+                            <th>DEPARTMENT</th>
+                            <th>STATUS</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>W.L. Bhashitha</b></td>
+                            <td>Computer Science</td>
+                            <td><span class="badge pending">Pending</span></td>
+                            <td><button style="background:none; border:none; color:var(--accent); cursor:pointer; font-weight:bold;">View</button></td>
+                        </tr>
+                        <tr>
+                            <td><b>Naveen Perera</b></td>
+                            <td>Data Science</td>
+                            <td><span class="badge approved">Approved</span></td>
+                            <td><button style="background:none; border:none; color:var(--accent); cursor:pointer; font-weight:bold;">View</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Right Side: Feedback Tool -->
+            <div class="card eval-panel">
+                <h3>Evaluation</h3>
+                <div class="criteria">
+                    <div class="criteria-label"><span>Innovation</span><span>85%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
+                </div>
+                <div class="criteria">
+                    <div class="criteria-label"><span>Feasibility</span><span>60%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 60%; background:#FFB800;"></div></div>
+                </div>
+                
+                <p style="font-size: 13px; color: var(--text-dark); margin-top: 20px; font-weight: bold;">Reviewer Comment</p>
+                <textarea class="comment-box" placeholder="Write your feedback here..."></textarea>
+                
+                <div class="btn-group">
+                    <button class="btn btn-approve">Approve</button>
+                    <button class="btn btn-reject">Reject</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
