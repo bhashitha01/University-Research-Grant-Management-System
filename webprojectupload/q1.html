@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="q1.css">
+</head>
+<body>
+   <div id="page-upload" class="page">
+            <div class="upload-card">
+                <h2><i class="fa-solid fa-upload" style="color:#2F5DD3;margin-right:10px;"></i>Upload Research</h2>
+                <p>Upload your research documents here. Accepted formats: PDF, DOCX, PPTX</p>
+                <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <span><b>Click to browse</b> or drag & drop your file here</span>
+                    <input type="file" id="fileInput" style="display:none;" accept=".pdf,.docx,.pptx">
+                </div>
+                <button class="btn-upload">
+                    <i class="fa-solid fa-paper-plane"></i>Submit Research
+                </button>
+            </div>
+        </div> 
+
+</body>
+</html>
+        
