@@ -1,4 +1,3 @@
-
 /* ─── DATA ─── */
 const researches = [
     {id:1,title:"AI Research",       date:"2024-03-31",status:"pending",  supervisor:"Dr. Sumith", description:"Research on Artificial Intelligence and machine learning applications."},
