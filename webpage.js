@@ -117,3 +117,4 @@ document.getElementById("detailOverlay").addEventListener("click",e=>{if(e.targe
 function closeModal(){document.getElementById("detailOverlay").classList.remove("open");}
 
 render();
+
