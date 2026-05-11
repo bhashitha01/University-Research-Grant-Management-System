@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResearchDesk Student</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="template.css">
+    <script src="templated.js" defer></script>
+
+</head>
+<body>
+<div class="dashboard">
+
+    <!-- -- SIDEBAR -- --> 
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+            <div><h2>Student</h2><p>ResearchDesk</p></div>
+        </div>
+        <nav class="nav-menu">
+            <button class="nav-item active" onclick="showPage('dashboard',this)">
+                <i class="fa-solid fa-desktop"></i><span>Dashboard</span>
+            </button>
+            <button class="nav-item" onclick="showPage('proposal',this)">
+                <i class="fa-solid fa-clipboard-list"></i><span>Proposal</span>
+            </button>
+            <button class="nav-item" onclick="showPage('upload',this)">
+                <i class="fa-solid fa-upload"></i><span>Upload</span>
+            </button>
+            <button class="nav-item" onclick="showPage('review',this)">
+                <i class="fa-solid fa-star"></i><span>Review</span>
+            </button>
+        </nav>
+        <a href="Front.html">
+        <button class="nav-item logout">
+            <i class="fa-solid fa-right-from-bracket"></i><span>Log out</span>
+        </button>
+    </a>
+    </aside>
+
+    <!-- -- MAIN -- -->
+    <main class="main-content">
+
+        <!-- Topbar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <h3 id="pageTitle"><i class="fa-solid fa-desktop" style="margin-right:8px;"></i>Dashboard</h3>
+            </div>
+            <div class="topbar-right">
+                <!--Dark Mood-->
+                <div class="mode-toggle" id="darkModeToggle" style="cursor: pointer;">
+                    <i class="fa-regular fa-moon" id="modeIcon"></i>
+                </div>
+                <i class="fa-regular fa-bell"></i>
+                <div class="user-profile">
+                    <img src="https://i.pravatar.cc/40?img=12" alt="User">
+                    <div><h4>W.L Bhashitha</h4></div>
+                </div>
+            </div>
+        </header>
+
+</body>
+</html>
