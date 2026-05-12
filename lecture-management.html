@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ResearchDesk — Lecturer</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="lecture.css">
+</head>
+<body>
+<div class="app">
+
+<!-- ══ SIDEBAR ══ -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+    <div class="logo-text">
+      <h2>Lecturer</h2>
+      <p>ResearchDesk</p>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <button class="nav-btn active" onclick="showPage('dashboard',this)">
+      <i class="fa-solid fa-chart-pie"></i>Dashboard
+    </button>
+    <button class="nav-btn" onclick="showPage('assigned',this)">
+      <i class="fa-solid fa-clipboard-list"></i>Assigned Proposals
+      <span class="nav-badge blue">5</span>
+    </button>
+
+  
+    <button class="nav-btn" onclick="showPage('pending',this)">
+      <i class="fa-solid fa-hourglass-half"></i>Pending Reviews
+      <span class="nav-badge">3</span>
+    </button>
+    <button class="nav-btn" onclick="showPage('complete',this)">
+      <i class="fa-solid fa-circle-check"></i>Complete Reviews
+      <span class="nav-badge green">8</span>
+    </button>
+
+    <button class="nav-btn" onclick="showPage('evaluation',this)">
+      <i class="fa-solid fa-star-half-stroke"></i>Evaluation Form
+    </button>
+    <button class="nav-btn" onclick="showPage('report',this)">
+      <i class="fa-solid fa-file-lines"></i>Research Report
+    </button>
+
+    <button class="nav-btn" onclick="showPage('settings',this)">
+      <i class="fa-solid fa-gear"></i>Settings
+    </button>
+  </nav>
+
+  <div class="sidebar-footer">
+    <button class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i>Log Out</button>
+  </div>
+</aside>
+
+<!-- ══ MAIN ══ -->
+<div class="main">
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <h1 id="pageTitle">Dashboard</h1>
+      <p id="pageSubtitle">Welcome back, Dr. Perera</p>
+    </div>
+    <div class="topbar-right">
+      <div class="topbar-icon-btn" title="Search"><i class="fa-solid fa-magnifying-glass"></i></div>
+      <div class="topbar-icon-btn" title="Notifications">
+        <i class="fa-regular fa-bell"></i>
+        <span class="notif-dot"></span>
+      </div>
+      <div class="topbar-profile">
+        <img src="https://i.pravatar.cc/40?img=15" alt="User">
+        <div class="topbar-profile-info">
+          <h4>Dr. R. Perera</h4>
+          <p>Senior Lecturer</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="content">
+
+    <!-- ══ DASHBOARD PAGE ══ -->
+    <div id="page-dashboard" class="page active">
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-icon blue"><i class="fa-solid fa-clipboard-list"></i></div>
+          <div class="stat-info"><h3>5</h3><p>Assigned Proposals</p></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon amber"><i class="fa-solid fa-hourglass-half"></i></div>
+          <div class="stat-info"><h3>3</h3><p>Pending Reviews</p></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="stat-info"><h3>8</h3><p>Completed Reviews</p></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div class="stat-info"><h3>2</h3><p>Overdue Items</p></div>
+        </div>
+      </div>
+
+      <!-- Dashboard grid -->
+      <div class="dash-grid">
+        <div style="display:flex;flex-direction:column;gap:20px;">
+
+          <!-- Notifications -->
+          <div class="card">
+            <div class="card-header">
+              <h3><i class="fa-regular fa-bell"></i>Notifications</h3>
+              <button class="view-all">Mark all read</button>
+            </div>
+            <div class="card-body">
+              <div class="notif-item">
+                <img class="notif-avatar" src="https://i.pravatar.cc/40?img=12" alt="">
+                <div class="notif-body">
+                  <strong>W.L. Bhashitha submitted a proposal</strong>
+                  <p>AI Research — awaiting your review</p>
+                  <div class="notif-time"><i class="fa-regular fa-clock" style="margin-right:4px;"></i>10 min ago</div>
+                </div>
+                <div class="notif-unread"></div>
+              </div>
+              <div class="notif-item">
+                <div class="notif-icon-wrap amber"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <div class="notif-body">
+                  <strong>Review deadline approaching</strong>
+                  <p>Computer Research — due in 2 days</p>
+                  <div class="notif-time"><i class="fa-regular fa-clock" style="margin-right:4px;"></i>1 hr ago</div>
+                </div>
+                <div class="notif-unread"></div>
+              </div>
+              <div class="notif-item">
+                <img class="notif-avatar" src="https://i.pravatar.cc/40?img=20" alt="">
+                <div class="notif-body">
+                  <strong>K. Madushani replied to your comment</strong>
+                  <p>"Thank you for the feedback, I will revise..."</p>
+                  <div class="notif-time"><i class="fa-regular fa-clock" style="margin-right:4px;"></i>3 hrs ago</div>
+                </div>
+              </div>
+              <div class="notif-item">
+                <div class="notif-icon-wrap green"><i class="fa-solid fa-circle-check"></i></div>
+                <div class="notif-body">
+                  <strong>Evaluation submitted successfully</strong>
+                  <p>IoT Security Research — graded</p>
+                  <div class="notif-time"><i class="fa-regular fa-clock" style="margin-right:4px;"></i>Yesterday</div>
+                </div>
+              </div>
+              <div class="notif-item">
+                <img class="notif-avatar" src="https://i.pravatar.cc/40?img=33" alt="">
+                <div class="notif-body">
+                  <strong>N. Karunathilake submitted report</strong>
+                  <p>Data Science Study — final report uploaded</p>
+                  <div class="notif-time"><i class="fa-regular fa-clock" style="margin-right:4px;"></i>Yesterday</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upcoming Deadlines -->
+        <div class="card" style="height:fit-content;">
+          <div class="card-header">
+            <h3><i class="fa-regular fa-calendar-days"></i>Upcoming Deadlines</h3>
+            <button class="view-all">View calendar</button>
+          </div>
+          <div class="card-body">
+            <div class="deadline-item">
+              <div class="deadline-date urgent"><div class="dd">15</div><div class="dm">May</div></div>
+              <div class="deadline-info">
+                <strong>AI Research Review</strong>
+                <span>W.L. Bhashitha</span>
+              </div>
+              <span class="deadline-tag red">2 days</span>
+            </div>
+            <div class="deadline-item">
+              <div class="deadline-date soon"><div class="dd">18</div><div class="dm">May</div></div>
+              <div class="deadline-info">
+                <strong>IoT Security Eval</strong>
+                <span>N. Karunathilake</span>
+              </div>
+              <span class="deadline-tag amber">5 days</span>
+            </div>
+            <div class="deadline-item">
+              <div class="deadline-date soon"><div class="dd">22</div><div class="dm">May</div></div>
+              <div class="deadline-info">
+                <strong>Data Science Report</strong>
+                <span>Final submission</span>
+              </div>
+              <span class="deadline-tag amber">9 days</span>
+            </div>
+            <div class="deadline-item">
+              <div class="deadline-date ok"><div class="dd">01</div><div class="dm">Jun</div></div>
+              <div class="deadline-info">
+                <strong>Semester End Review</strong>
+                <span>All proposals</span>
+              </div>
+              <span class="deadline-tag green">21 days</span>
+            </div>
+            <div class="deadline-item">
+              <div class="deadline-date ok"><div class="dd">10</div><div class="dm">Jun</div></div>
+              <div class="deadline-info">
+                <strong>Final Grades Submit</strong>
+                <span>All students</span>
+              </div>
+              <span class="deadline-tag green">30 days</span>
+            </div>
+            <div class="deadline-item">
+              <div class="deadline-date ok"><div class="dd">15</div><div class="dm">Jun</div></div>
+              <div class="deadline-info">
+                <strong>Viva Voce Panel</strong>
+                <span>Group presentations</span>
+              </div>
+              <span class="deadline-tag green">35 days</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ASSIGNED PROPOSALS ══ -->
+    <div id="page-assigned" class="page">
+      <div class="table-card">
+        <div class="table-toolbar">
+          <h3><i class="fa-solid fa-clipboard-list"></i>Assigned Proposals</h3>
+          <div class="toolbar-controls">
+            <div class="search-wrap"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Search student or title..." oninput="filterTable('assigned-tbody',this.value)"></div>
+            <select class="filter-select" onchange="filterByStatus('assigned-tbody',this.value)">
+              <option value="">All Status</option>
+              <option value="Pending">Pending</option>
+              <option value="Approved">Approved</option>
+              <option value="Rejected">Rejected</option>
+              <option value="Review">In Review</option>
+            </select>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead><tr>
+            <th>Student</th><th>Research Title</th><th>Submitted</th><th>Status</th><th>Action</th>
+          </tr></thead>
+          <tbody id="assigned-tbody">
+            <tr>
+              <td><div class="student-cell"><img src="https://i.pravatar.cc/40?img=12" alt=""><div><strong>W.L. Bhashitha</strong><span>S/18/001</span></div></div></td>
+              <td><div class="title-cell"><i class="fa-solid fa-file-lines"></i>AI Research</div></td>
+              <td>31/03/2024</td>
+              <td><span class="badge badge-pending"><i class="fa-solid fa-clock"></i>Pending</span></td>
+              <td><div class="action-btns">
+                <button class="btn-view" onclick="openViewModal({title:'AI Research',student:'W.L. Bhashitha',date:'31/03/2024',status:'Pending',supervisor:'Dr. R. Perera',desc:'Research on AI and ML applications.',avatar:'https://i.pravatar.cc/60?img=12',field:'Artificial Intelligence & Machine Learning',objective:'To explore practical applications of AI and ML in real-world environments and propose a framework for adaptive learning systems.',method:'Literature review, experimental prototyping, and quantitative analysis.',keywords:'AI, Machine Learning, Neural Networks, Adaptive Systems'})"><i class="fa-solid fa-eye"></i> View</button>
+          
+              </div></td>
+            </tr>
+            <tr>
+              <td><div class="student-cell"><img src="https://i.pravatar.cc/40?img=20" alt=""><div><strong>K. Madushani</strong><span>S/18/002</span></div></div></td>
+              <td><div class="title-cell"><i class="fa-solid fa-file-lines"></i>Computer Research</div></td>
+              <td>09/03/2024</td>
+              <td><span class="badge badge-approved"><i class="fa-solid fa-check"></i>Approved</span></td>
+              <td><div class="action-btns">
+                <button class="btn-view" onclick="openViewModal({title:'Computer Research',student:'K. Madushani',date:'09/03/2024',status:'Approved',supervisor:'Dr. R. Perera',desc:'Study on distributed computing systems.',avatar:'https://i.pravatar.cc/60?img=20',field:'Distributed Computing',objective:'To analyze performance bottlenecks in distributed systems and propose optimization strategies.',method:'Case study analysis, benchmarking, and simulation testing.',keywords:'Distributed Systems, Load Balancing, Cloud, Performance'})"><i class="fa-solid fa-eye"></i> View</button>
+
+              </div></td>
+            </tr>
+            <tr>
+              <td><div class="student-cell"><img src="https://i.pravatar.cc/40?img=33" alt=""><div><strong>N. Karunathilake</strong><span>S/18/003</span></div></div></td>
+              <td><div class="title-cell"><i class="fa-solid fa-file-lines"></i>IoT Security</div></td>
+              <td>20/01/2024</td>
+              <td><span class="badge badge-review"><i class="fa-solid fa-eye"></i>In Review</span></td>
+              <td><div class="action-btns">
+                <button class="btn-view" onclick="openViewModal({title:'IoT Security',student:'N. Karunathilake',date:'20/01/2024',status:'In Review',supervisor:'Dr. R. Perera',desc:'Security vulnerabilities in IoT devices.',avatar:'https://i.pravatar.cc/60?img=33',field:'Cybersecurity & IoT',objective:'To identify and classify security vulnerabilities in consumer IoT devices and propose a mitigation framework.',method:'Vulnerability scanning, penetration testing, and literature analysis.',keywords:'IoT, Cybersecurity, Vulnerabilities, Network Security'})"><i class="fa-solid fa-eye"></i> View</button>
+               
+              </div></td>
+            </tr>
+            <tr>
+              <td><div class="student-cell"><img src="https://i.pravatar.cc/40?img=45" alt=""><div><strong>P. Senaratne</strong><span>S/18/004</span></div></div></td>
+              <td><div class="title-cell"><i class="fa-solid fa-file-lines"></i>Data Science Study</div></td>
+              <td>15/02/2024</td>
+              <td><span class="badge badge-rejected"><i class="fa-solid fa-xmark"></i>Rejected</span></td>
+              <td><div class="action-btns">
+                <button class="btn-view" onclick="openViewModal({title:'Data Science Study',student:'P. Senaratne',date:'15/02/2024',status:'Rejected',supervisor:'Dr. R. Perera',desc:'Big data analytics — rejected, needs scope revision.',avatar:'https://i.pravatar.cc/60?img=45',field:'Data Science & Big Data',objective:'To evaluate the effectiveness of various big data frameworks for large-scale analytics workloads.',method:'Comparative analysis of Hadoop, Spark, and Flink with real-world datasets.',keywords:'Big Data, Data Analytics, Hadoop, Spark'})"><i class="fa-solid fa-eye"></i> View</button>
+               
+              </div></td>
+            </tr>
+            <tr>
+              <td><div class="student-cell"><img src="https://i.pravatar.cc/40?img=57" alt=""><div><strong>S. Jayasinghe</strong><span>S/18/005</span></div></div></td>
+              <td><div class="title-cell"><i class="fa-solid fa-file-lines"></i>Blockchain in Healthcare</div></td>
+              <td>05/04/2024</td>
+              <td><span class="badge badge-pending"><i class="fa-solid fa-clock"></i>Pending</span></td>
+              <td><div class="action-btns">
+                <button class="btn-view" onclick="openViewModal({title:'Blockchain in Healthcare',student:'S. Jayasinghe',date:'05/04/2024',status:'Pending',supervisor:'Dr. R. Perera',desc:'Blockchain technology applications in medical records.',avatar:'https://i.pravatar.cc/60?img=57',field:'Blockchain & Healthcare IT',objective:'To design a blockchain-based system for secure and decentralized management of electronic health records.',method:'Prototype development using Ethereum smart contracts with simulated EHR data.',keywords:'Blockchain, Healthcare, EHR, Smart Contracts, Security'})"><i class="fa-solid fa-eye"></i> View</button>
+                
+              </div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ PENDING REVIEWS ══ -->
+    <div id="page-pending" class="page">
+      <div class="table-card">
+        <div class="table-toolbar">
+          <h3><i class="fa-solid fa-hourglass-half"></i>Pending Reviews</h3>
+          <div class="toolbar-controls">
+            <div class="search-wrap"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Search..." oninput="filterTable('pending-tbody',this.value)"></div>
+            <button class="btn-primary"><i class="fa-solid fa-filter"></i>Filter</button>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead><tr><th>Student</th><th>Research Title</th><th>Submitted</th><th>Due Date</th><th>Priority</th><th>Action</th></tr></thead>
+          <tbody id="pending-tbody">
+            <tr>
+              <td><div class="student-cell"><img src="https://i.pravatar.cc/40?img=12" alt=""><div><strong>W.L. Bhashitha</strong><span>S/18/001</span></div></div></td>
+              <td><div class="title-cell"><i class="fa-solid fa-file-lines"></i>AI Research</div></td>
+              <td>31/03/2024</td><td>15/05/2024</td>
+              <td><span class="badge badge-rejected"><i class="fa-solid fa-fire"></i>High</span></td>
+              <td><div class="action-btns">
+                <button class="btn-icon" title="Start Review"><i class="fa-solid fa-pen-to-square"></i></button>
+                <button class="btn-icon" title="View"><i class="fa-solid fa-eye"></i></button>
+              </div></td>
+            </tr>
+            <tr>
+              <td><div class="student-cell"><img src="https://i.pravatar.cc/40?img=33" alt=""><div><strong>N. Karunathilake</strong><span>S/18/003</span></div></div></td>
+              <td><div class="title-cell"><i class="fa-solid fa-file-lines"></i>IoT Security</div></td>
+              <td>20/01/2024</td><td>18/05/2024</td>
+              <td><span class="badge badge-pending"><i class="fa-solid fa-circle-half-stroke"></i>Medium</span></td>
+              <td><div class="action-btns">
+                <button class="btn-icon" title="Start Review"><i class="fa-solid fa-pen-to-square"></i></button>
+                <button class="btn-icon" title="View"><i class="fa-solid fa-eye"></i></button>
+              </div></td>
+            </tr>
+            <tr>
+              <td><div class="student-cell"><img src="https://i.pravatar.cc/40?img=57" alt=""><div><strong>S. Jayasinghe</strong><span>S/18/005</span></div></div></td>
+              <td><div class="title-cell"><i class="fa-solid fa-file-lines"></i>Blockchain in Healthcare</div></td>
+              <td>05/04/2024</td><td>22/05/2024</td>
+              <td><span class="badge badge-approved"><i class="fa-solid fa-circle"></i>Low</span></td>
+              <td><div class="action-btns">
+                <button class="btn-icon" title="Start Review"><i class="fa-solid fa-pen-to-square"></i></button>
+                <button class="btn-icon" title="View"><i class="fa-solid fa-eye"></i></button>
+              </div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ COMPLETE REVIEWS ══ -->
+    <div id="page-complete" class="page">
+      <div class="table-card">
+        <div class="table-toolbar">
+          <h3><i class="fa-solid fa-circle-check"></i>Complete Reviews</h3>
+          <div class="toolbar-controls">
+            <div class="search-wrap"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Search..." oninput="filterTable('complete-tbody',this.value)"></div>
+            <button class="btn-secondary"><i class="fa-solid fa-download"></i>Export</button>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead><tr><th>Student</th><th>Research Title</th><th>Submitted</th><th>Reviewed On</th><th>Score</th><th>Result</th><th>Action</th></tr></thead>
+          <tbody id="complete-tbody">
+            <tr>
+              <td><div class="student-cell"><img src="https://i.pravatar.cc/40?img=20" alt=""><div><strong>K. Madushani</strong><span>S/18/002</span></div></div></td>
+              <td><div class="title-cell"><i class="fa-solid fa-file-lines"></i>Computer Research</div></td>
+              <td>09/03/2024</td><td>20/03/2024</td>
+              <td><strong style="color:#10B981;font-size:15px;">85/100</strong></td>
+              <td><span class="badge badge-approved"><i class="fa-solid fa-check"></i>Approved</span></td>
+              <td><div class="action-btns"><button class="btn-icon" title="View Report"><i class="fa-solid fa-file-lines"></i></button></div></td>
+            </tr>
+            <tr>
+              <td><div class="student-cell"><img src="https://i.pravatar.cc/40?img=45" alt=""><div><strong>P. Senaratne</strong><span>S/18/004</span></div></div></td>
+              <td><div class="title-cell"><i class="fa-solid fa-file-lines"></i>Data Science Study</div></td>
+              <td>15/02/2024</td><td>28/02/2024</td>
+              <td><strong style="color:#EF4444;font-size:15px;">42/100</strong></td>
+              <td><span class="badge badge-rejected"><i class="fa-solid fa-xmark"></i>Rejected</span></td>
+              <td><div class="action-btns"><button class="btn-icon" title="View Report"><i class="fa-solid fa-file-lines"></i></button></div></td>
+            </tr>
+            <tr>
+              <td><div class="student-cell"><img src="https://i.pravatar.cc/40?img=61" alt=""><div><strong>T. Fernando</strong><span>S/18/006</span></div></div></td>
+              <td><div class="title-cell"><i class="fa-solid fa-file-lines"></i>Cloud Architecture</div></td>
+              <td>10/01/2024</td><td>22/01/2024</td>
+              <td><strong style="color:#10B981;font-size:15px;">91/100</strong></td>
+              <td><span class="badge badge-approved"><i class="fa-solid fa-check"></i>Approved</span></td>
+              <td><div class="action-btns"><button class="btn-icon" title="View Report"><i class="fa-solid fa-file-lines"></i></button></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ EVALUATION FORM ══ -->
+    <div id="page-evaluation" class="page">
+      <div class="form-card">
+        <div class="form-title"><i class="fa-solid fa-star-half-stroke" style="color:#2F5DD3;margin-right:10px;"></i>Evaluation Form</div>
+        <div class="form-subtitle">Complete the evaluation for the selected student research proposal.</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Student Name <span>*</span></label>
+            <select class="form-select">
+              <option>Select student...</option>
+              <option>W.L. Bhashitha — AI Research</option>
+              <option>N. Karunathilake — IoT Security</option>
+              <option>S. Jayasinghe — Blockchain in Healthcare</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Evaluation Date <span>*</span></label>
+            <input type="date" class="form-input" value="2024-05-11">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Research Title</label>
+            <input type="text" class="form-input" placeholder="Auto-filled from selection">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Semester / Year</label>
+            <select class="form-select">
+              <option>Semester 1 — 2024</option>
+              <option>Semester 2 — 2024</option>
+            </select>
+          </div>
+          <div class="form-divider"></div>
+          <div class="form-group full">
+            <label class="form-label">Marking Criteria <span>*</span></label>
+            <div class="score-row">
+              <div class="score-item"><label>Relevance</label><input type="number" class="form-input" min="0" max="20" placeholder="0–20" oninput="calcTotal()"></div>
+              <div class="score-item"><label>Methodology</label><input type="number" class="form-input" min="0" max="20" placeholder="0–20" oninput="calcTotal()"></div>
+              <div class="score-item"><label>Literature</label><input type="number" class="form-input" min="0" max="20" placeholder="0–20" oninput="calcTotal()"></div>
+              <div class="score-item"><label>Presentation</label><input type="number" class="form-input" min="0" max="20" placeholder="0–20" oninput="calcTotal()"></div>
+              <div class="score-item"><label>Innovation</label><input type="number" class="form-input" min="0" max="20" placeholder="0–20" oninput="calcTotal()"></div>
+            </div>
+          </div>
+          <div class="total-score">
+            <span><i class="fa-solid fa-calculator" style="margin-right:8px;"></i>Total Score</span>
+            <strong id="totalScore">0 / 100</strong>
+          </div>
+          <div class="form-group full">
+            <label class="form-label">Overall Recommendation <span>*</span></label>
+            <select class="form-select">
+              <option>Select recommendation...</option>
+              <option>✅ Approve</option>
+              <option>🔄 Revise and Resubmit</option>
+              <option>❌ Reject</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label class="form-label">Comments / Feedback</label>
+            <textarea class="form-textarea" placeholder="Provide detailed feedback for the student..."></textarea>
+          </div>
+          <div class="form-actions">
+            <button class="btn-secondary"><i class="fa-regular fa-floppy-disk"></i>Save Draft</button>
+            <button class="btn-primary"><i class="fa-solid fa-paper-plane"></i>Submit Evaluation</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ RESEARCH REPORT ══ -->
+    <div id="page-report" class="page">
+      <div class="report-grid">
+        <div class="report-stat"><h2>16</h2><p>Total Proposals</p></div>
+        <div class="report-stat"><h2 style="color:#10B981;">11</h2><p>Approved</p></div>
+        <div class="report-stat"><h2 style="color:#EF4444;">5</h2><p>Rejected</p></div>
+      </div>
+      <div class="table-card" style="margin-bottom:20px;">
+        <div class="card-header"><h3><i class="fa-solid fa-chart-bar"></i>Performance Overview</h3></div>
+        <div class="card-body">
+          <div class="progress-bar-wrap">
+            <div class="progress-bar-label"><span>Approval Rate</span><span>69%</span></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:69%"></div></div>
+          </div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar-label"><span>Review Completion</span><span>73%</span></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:73%"></div></div>
+          </div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar-label"><span>On-Time Submission</span><span>54%</span></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill fill-amber" style="width:54%"></div></div>
+          </div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar-label"><span>Overdue Rate</span><span>12%</span></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill fill-red" style="width:12%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="table-card">
+        <div class="table-toolbar">
+          <h3><i class="fa-solid fa-file-lines"></i>All Research Reports</h3>
+          <div class="toolbar-controls">
+            <div class="search-wrap"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Search..."></div>
+            <button class="btn-secondary"><i class="fa-solid fa-download"></i>Export PDF</button>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead><tr><th>Student</th><th>Title</th><th>Score</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><div class="student-cell"><img src="https://i.pravatar.cc/40?img=20" alt=""><div><strong>K. Madushani</strong><span>S/18/002</span></div></div></td>
+              <td><div class="title-cell"><i class="fa-solid fa-file-lines"></i>Computer Research</div></td>
+              <td><strong style="color:#10B981;">85/100</strong></td>
+              <td><span class="badge badge-approved"><i class="fa-solid fa-check"></i>Approved</span></td>
+              <td><div class="action-btns"><button class="btn-icon" title="View"><i class="fa-solid fa-eye"></i></button><button class="btn-icon" title="Download"><i class="fa-solid fa-download"></i></button></div></td>
+            </tr>
+            <tr>
+              <td><div class="student-cell"><img src="https://i.pravatar.cc/40?img=61" alt=""><div><strong>T. Fernando</strong><span>S/18/006</span></div></div></td>
+              <td><div class="title-cell"><i class="fa-solid fa-file-lines"></i>Cloud Architecture</div></td>
+              <td><strong style="color:#10B981;">91/100</strong></td>
+              <td><span class="badge badge-approved"><i class="fa-solid fa-check"></i>Approved</span></td>
+              <td><div class="action-btns"><button class="btn-icon" title="View"><i class="fa-solid fa-eye"></i></button><button class="btn-icon" title="Download"><i class="fa-solid fa-download"></i></button></div></td>
+            </tr>
+            <tr>
+              <td><div class="student-cell"><img src="https://i.pravatar.cc/40?img=45" alt=""><div><strong>P. Senaratne</strong><span>S/18/004</span></div></div></td>
+              <td><div class="title-cell"><i class="fa-solid fa-file-lines"></i>Data Science Study</div></td>
+              <td><strong style="color:#EF4444;">42/100</strong></td>
+              <td><span class="badge badge-rejected"><i class="fa-solid fa-xmark"></i>Rejected</span></td>
+              <td><div class="action-btns"><button class="btn-icon" title="View"><i class="fa-solid fa-eye"></i></button><button class="btn-icon" title="Download"><i class="fa-solid fa-download"></i></button></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <!-- ══ SETTINGS ══ -->
+    <div id="page-settings" class="page">
+      <div class="settings-grid">
+        <div class="settings-nav">
+          <button class="settings-nav-btn active" onclick="this.parentElement.querySelectorAll('.settings-nav-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')"><i class="fa-solid fa-user"></i>Profile</button>
+          <button class="settings-nav-btn" onclick="this.parentElement.querySelectorAll('.settings-nav-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')"><i class="fa-solid fa-bell"></i>Notifications</button>
+          <button class="settings-nav-btn" onclick="this.parentElement.querySelectorAll('.settings-nav-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')"><i class="fa-solid fa-lock"></i>Security</button>
+          <button class="settings-nav-btn" onclick="this.parentElement.querySelectorAll('.settings-nav-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')"><i class="fa-solid fa-palette"></i>Appearance</button>
+        </div>
+        <div class="settings-content">
+          <div class="settings-section-title"><i class="fa-solid fa-user" style="color:#2F5DD3;margin-right:10px;"></i>Profile Settings</div>
+          <div class="profile-avatar-section">
+            <img src="https://i.pravatar.cc/80?img=15" alt="">
+            <div class="avatar-info">
+              <h4>Dr. R. Perera</h4>
+              <p>Senior Lecturer — Faculty of Computing</p>
+              <button class="btn-outline"><i class="fa-solid fa-camera"></i>Change Photo</button>
+            </div>
+          </div>
+          <div class="settings-row">
+            <div class="settings-field"><label class="settings-label">First Name</label><input class="settings-input" value="Ruwan"></div>
+            <div class="settings-field"><label class="settings-label">Last Name</label><input class="settings-input" value="Perera"></div>
+          </div>
+          <div class="settings-field"><label class="settings-label">Email Address</label><input class="settings-input" value="r.perera@university.lk"></div>
+          <div class="settings-row">
+            <div class="settings-field"><label class="settings-label">Department</label><input class="settings-input" value="Faculty of Computing"></div>
+            <div class="settings-field"><label class="settings-label">Employee ID</label><input class="settings-input" value="LEC-2018-042"></div>
+          </div>
+          <div style="margin-top:8px;padding-top:20px;border-top:1px solid #f0f0f0;">
+            <div class="settings-section-title" style="font-size:14px;border:none;padding:0;margin-bottom:14px;"><i class="fa-solid fa-bell" style="color:#2F5DD3;margin-right:10px;"></i>Notification Preferences</div>
+            <div class="toggle-row"><div class="toggle-info"><strong>Email Notifications</strong><span>Receive proposal updates via email</span></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+            <div class="toggle-row"><div class="toggle-info"><strong>New Proposal Alerts</strong><span>Get notified when a student submits</span></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+            <div class="toggle-row"><div class="toggle-info"><strong>Deadline Reminders</strong><span>Reminders 2 days before due date</span></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+            <div class="toggle-row"><div class="toggle-info"><strong>Message Notifications</strong><span>Push alerts for new messages</span></div><label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label></div>
+          </div>
+          <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px;">
+            <button class="btn-secondary">Cancel</button>
+            <button class="btn-primary"><i class="fa-solid fa-floppy-disk"></i>Save Changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+</div><!-- /app -->
+
+<!-- ══ DETAIL MODAL ══ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h3><i class="fa-solid fa-file-lines" style="margin-right:8px;color:#2F5DD3;"></i>Proposal Detail</h3>
+      <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeModal()"><i class="fa-solid fa-xmark"></i>Close</button>
+      <button class="btn-primary"><i class="fa-solid fa-pen-to-square"></i>Start Review</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ VIEW PROPOSAL MODAL ══ -->
+<div class="modal-overlay" id="viewModalOverlay">
+  <div class="modal modal-wide">
+    <div class="modal-header">
+      <h3><i class="fa-solid fa-file-lines" style="margin-right:8px;color:#2F5DD3;"></i>Proposal Details</h3>
+      <button class="modal-close" onclick="closeViewModal()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-body" id="viewModalBody"></div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeViewModal()"><i class="fa-solid fa-xmark"></i>Close</button>
+      <button class="btn-primary" id="startReviewBtn" onclick="openReviewModal()"><i class="fa-solid fa-pen-to-square"></i>Start Review</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ REVIEW MODAL ══ -->
+<div class="modal-overlay" id="reviewModalOverlay">
+  <div class="modal modal-wide">
+    <div class="modal-header">
+      <h3><i class="fa-solid fa-star-half-stroke" style="margin-right:8px;color:#2F5DD3;"></i>Review Proposal</h3>
+      <button class="modal-close" onclick="closeReviewModal()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="review-student-info" id="reviewStudentInfo"></div>
+      <div class="review-section">
+        <div class="review-section-title"><i class="fa-solid fa-circle-check"></i>Decision</div>
+        <div class="review-decision-btns">
+          <label class="decision-option">
+            <input type="radio" name="reviewDecision" value="Approved" onchange="selectDecision(this)">
+            <span class="decision-card approve"><i class="fa-solid fa-check-circle"></i><span>Approve</span></span>
+          </label>
+          <label class="decision-option">
+            <input type="radio" name="reviewDecision" value="Rejected" onchange="selectDecision(this)">
+            <span class="decision-card reject"><i class="fa-solid fa-times-circle"></i><span>Reject</span></span>
+          </label>
+        </div>
+      </div>
+      <div class="review-section">
+        <div class="review-section-title"><i class="fa-solid fa-star"></i>Marks</div>
+        <div class="review-marks-row">
+          <div class="review-mark-item">
+            <label class="review-mark-label">Research Quality</label>
+            <div class="mark-input-wrap"><input type="number" class="review-mark-input" id="markQuality" min="0" max="25" placeholder="0" oninput="calcReviewTotal()"><span class="mark-max">/ 25</span></div>
+          </div>
+          <div class="review-mark-item">
+            <label class="review-mark-label">Methodology</label>
+            <div class="mark-input-wrap"><input type="number" class="review-mark-input" id="markMethod" min="0" max="25" placeholder="0" oninput="calcReviewTotal()"><span class="mark-max">/ 25</span></div>
+          </div>
+          <div class="review-mark-item">
+            <label class="review-mark-label">Literature Review</label>
+            <div class="mark-input-wrap"><input type="number" class="review-mark-input" id="markLit" min="0" max="25" placeholder="0" oninput="calcReviewTotal()"><span class="mark-max">/ 25</span></div>
+          </div>
+          <div class="review-mark-item">
+            <label class="review-mark-label">Presentation</label>
+            <div class="mark-input-wrap"><input type="number" class="review-mark-input" id="markPres" min="0" max="25" placeholder="0" oninput="calcReviewTotal()"><span class="mark-max">/ 25</span></div>
+          </div>
+        </div>
+        <div class="review-total-bar">
+          <span>Total Score</span>
+          <span class="review-total-val" id="reviewTotal">0 / 100</span>
+        </div>
+      </div>
+      <div class="review-section">
+        <div class="review-section-title"><i class="fa-solid fa-comment-dots"></i>Comment / Feedback</div>
+        <textarea class="review-comment-box" id="reviewComment" placeholder="Provide detailed feedback for the student..."></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeReviewModal()"><i class="fa-solid fa-arrow-left"></i>Back</button>
+      <button class="btn-primary" onclick="submitReview()"><i class="fa-solid fa-paper-plane"></i>Submit Review</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SUCCESS TOAST ══ -->
+<div class="review-toast" id="reviewToast">
+  <i class="fa-solid fa-circle-check"></i>
+  <span id="reviewToastMsg">Review submitted successfully!</span>
+</div>
+
+ <script src="lecture.js"></script>
+</body>
+</html>
